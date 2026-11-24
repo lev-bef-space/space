@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>Solar System 3D</title>
+<style>
+html,body{height:100%;margin:0}
+body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:radial-gradient(ellipse at 15% 10%,#2d2160 0,#0b0922 55%,#04030f 100%);color:#fff3d6;font:600 15px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;overflow:hidden}
+.d{position:relative;background:#000;overflow:hidden;box-shadow:0 0 0 2px rgba(255,243,214,.25),0 0 90px rgba(110,80,230,.5)}
+.d.phone{height:min(880px,calc(100dvh - 80px));aspect-ratio:390/844;border:10px solid #1b1735;border-radius:46px}
+.d.tablet{width:min(1100px,94vw,calc((100dvh - 80px)*4/3));aspect-ratio:4/3;border:12px solid #1b1735;border-radius:28px}
+iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+p{margin:0;opacity:.85}a{color:#ffb347}
+</style></head>
+<body><div class="d" id="d"><iframe id="f" allow="fullscreen; autoplay" allowfullscreen title="Solar System 3D"></iframe></div><p><span id="c"></span> · <a id="n" href="app.html">&#8599;</a></p>
+<script>
+(function(){
+var CAP={"en":["Phone preview","Tablet preview","Open full size"],"ru":["Вид на телефоне","Вид на планшете","Открыть во весь размер"],"it":["Anteprima telefono","Anteprima tablet","Apri a dimensione intera"],"es":["Vista de teléfono","Vista de tableta","Abrir a tamaño completo"],"fr":["Aperçu téléphone","Aperçu tablette","Ouvrir en taille réelle"],"de":["Handy-Ansicht","Tablet-Ansicht","In voller Größe öffnen"],"pt":["Pré-visualização no telemóvel","Pré-visualização no tablet","Abrir em tamanho real"],"pl":["Widok na telefonie","Widok na tablecie","Otwórz w pełnym rozmiarze"],"nl":["Telefoonweergave","Tabletweergave","Open op volledige grootte"],"zh":["手机预览","平板预览","以完整尺寸打开"],"hi":["फ़ोन प्रीव्यू","टैबलेट प्रीव्यू","पूरे आकार में खोलें"],"ar":["معاينة الهاتف","معاينة اللوحي","فتح بالحجم الكامل"],"ja":["スマホプレビュー","タブレットプレビュー","フルサイズで開く"],"ko":["휴대폰 미리보기","태블릿 미리보기","전체 크기로 열기"],"tr":["Telefon önizleme","Tablet önizleme","Tam boyutta aç"],"id":["Pratinjau ponsel","Pratinjau tablet","Buka ukuran penuh"],"vi":["Xem trước trên điện thoại","Xem trước trên máy tính bảng","Mở kích thước đầy đủ"],"uk":["Вигляд на телефоні","Вигляд на планшеті","Відкрити в повному розмірі"],"bn":["ফোন প্রিভিউ","ট্যাবলেট প্রিভিউ","পূর্ণ আকারে খুলুন"],"fa":["پیش‌نمایش گوشی","پیش‌نمایش تبلت","باز کردن در اندازه کامل"]},q=location.search,L=(/[?&]lang=([a-z]{2})/.exec(q)||[])[1]||'en',D=(/[?&]dev=(phone|tablet)/.exec(q)||[])[1]||'phone';
+if(!CAP[L])L='en';
+var d=document.getElementById('d'),f=document.getElementById('f'),n=document.getElementById('n');
+d.className='d '+D;f.src='app.html?lang='+L+'&dev='+D+'&frame=1';
+document.getElementById('c').textContent=CAP[L][D==='phone'?0:1];
+n.textContent=CAP[L][2];n.href='app.html?lang='+L+'&dev=computer';
+document.documentElement.lang=L;
+function tell(){try{f.contentWindow.postMessage({ss:'fs',on:!!(document.fullscreenElement||document.webkitFullscreenElement)},'*')}catch(e){}}
+['fullscreenchange','webkitfullscreenchange'].forEach(function(k){document.addEventListener(k,tell)});
+addEventListener('message',function(ev){if(!ev.data||ev.data.ss!=='fs-toggle')return;var e=document.documentElement;
+ if(document.fullscreenElement||document.webkitFullscreenElement){(document.exitFullscreen||document.webkitExitFullscreen).call(document)}
+ else{var r=e.requestFullscreen||e.webkitRequestFullscreen;if(r){var p=r.call(e);if(p&&p.catch)p.catch(function(){})}}});
+})();
+</script></body></html>

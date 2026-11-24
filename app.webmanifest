@@ -1,0 +1,17 @@
+{
+  "name": "Solar System 3D",
+  "short_name": "Solar 3D",
+  "description": "Interactive 3D Solar System: planets, tours, quizzes, a time machine and the night sky. Free, twenty languages.",
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "app.html?dev=auto",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#070516",
+  "theme_color": "#070516",
+  "icons": [
+    { "src": "preview.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "preview.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
